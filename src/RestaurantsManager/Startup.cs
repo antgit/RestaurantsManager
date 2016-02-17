@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using RestaurantsManager.Repositories;
 
 namespace RestaurantsManager
 {
@@ -11,6 +12,8 @@ namespace RestaurantsManager
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddTransient<RestaurantRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
