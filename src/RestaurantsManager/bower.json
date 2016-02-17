@@ -2,6 +2,7 @@
 	"name": "ASP.NET",
 	"private": true,
   "dependencies": {
-    "bootstrap-css-without-fonts": "3.3.4"
+    "bootstrap-css-without-fonts": "3.3.4",
+    "knockout": "3.4.0"
   }
 }

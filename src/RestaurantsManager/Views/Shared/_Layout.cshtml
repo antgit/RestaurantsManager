@@ -8,8 +8,10 @@
     <link href="~/lib/bootstrap-css-without-fonts/css/bootstrap-theme.css" rel="stylesheet" />
 </head>
 <body>
-    <div>
-        @RenderBody()
-    </div>
+<div>
+    @RenderBody()
+</div>
+<script src="~/lib/knockout/dist/knockout.js"></script>
+    @RenderSection("Scripts", false)
 </body>
 </html>

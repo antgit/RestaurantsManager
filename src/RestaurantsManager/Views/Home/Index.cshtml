@@ -4,7 +4,7 @@
     <form>
         <div class="form-group">
             <label for="outcode">Email address</label>
-            <input type="text" class="form-control" id="outcode">
+            <input type="text" class="form-control" id="outcode" data-bind="value: outcode">
         </div>
     </form>
 
@@ -13,4 +13,15 @@
         <tr><td><td></td></tr>
         <tr><td><td></td></tr>
     </table>
+
+    @section Scripts
+    {
+        <script type="text/javascript">
+            var viewModel = new function() {
+                this.outcode = "se10";
+            }
+
+            ko.applyBindings(viewModel);
+        </script>
+    }
 </div>
