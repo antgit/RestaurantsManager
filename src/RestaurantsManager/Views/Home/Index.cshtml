@@ -44,9 +44,7 @@
                         type: "GET",
                         data: {outcode: outcode}
                     }).done(function (data) {
-                        data.forEach(function (r) {
-                            self.restaurants.push(r);
-                        });
+                        self.restaurants(data);
                     }).fail(function() {
                         console.error("Can't load restaurants data");
                     });
