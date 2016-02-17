@@ -14,6 +14,8 @@ namespace RestaurantsManager.Controllers
 
         public IActionResult Index()
         {
+            var restaurants = _restaurantRepository.Get("se19");
+
             return View();
         }
     }
