@@ -3,6 +3,7 @@
 	"private": true,
   "dependencies": {
     "bootstrap-css-without-fonts": "3.3.4",
-    "knockout": "3.4.0"
+    "knockout": "3.4.0",
+    "jQuery": "2.2.0"
   }
 }

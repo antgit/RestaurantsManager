@@ -1,7 +1,7 @@
 ﻿<div class="container">
     <h1>Restaurants list</h1>
 
-    <form>
+    <form data-bind="submit: onSubmit">
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Outcode" data-bind="value: outcode">
         </div>
@@ -29,14 +29,46 @@
     {
         <script type="text/javascript">
             var viewModel = new function() {
-                this.outcode = "se10";
-                this.restaurants = ko.observableArray([
+                var self = this;
+
+                self.outcode = ko.observable("");
+                self.outcode.subscribe(function(newValue) {
+                    self.loadRestaurants(newValue);
+                });
+
+                /*self.restaurants = ko.computed(function () {
+                    return ko.observableArray([
+                        {
+                            name: self.outcode(),
+                            ratingStars: 2,
+                            cuisineTypes: "Indian"
+                        }
+                    ]);
+                });*/
+
+                self.restaurants = ko.observableArray([
                     {
-                        name: "1",
+                        name: self.outcode(),
                         ratingStars: 2,
                         cuisineTypes: "Indian"
                     }
                 ]);
+
+                self.loadRestaurants = function (outcode) {
+                    $.ajax({
+                        url: "/Home/GetRestaurants",
+                        type: "GET",
+                        data: {outcode: outcode}
+                    }).done(function (restaurants) {
+                        alert(restaurants.length);
+                    }).fail(function() {
+                        console.error("Can't load restaurants data");
+                    });
+                }
+
+                self.onSubmit = function(e) {
+                    return false;
+                }
             }
 
             ko.applyBindings(viewModel);

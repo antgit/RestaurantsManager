@@ -16,6 +16,7 @@ namespace RestaurantsManager
 
             services.AddTransient<RestaurantRepository>();
             services.AddTransient<JustEatApiConnection>();
+            services.AddTransient<ObjectToJsonSerializer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
