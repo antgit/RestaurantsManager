@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using RestaurantsManager.Models;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using RestaurantsManager.Infrastructure;
 
 namespace RestaurantsManager.Repositories
@@ -16,9 +17,11 @@ namespace RestaurantsManager.Repositories
 
         public async Task<List<RestaurantModel>> Get(string outcode)
         {
-            var data = await _justEatApiConnection.MakeRequest();
+            var json = await _justEatApiConnection.MakeRequest();
 
-            return null;
+            var data = JsonConvert.DeserializeObject<RestaurantResponseModel>(json);
+            
+            return data.Restaurants;
         }
     }
 }

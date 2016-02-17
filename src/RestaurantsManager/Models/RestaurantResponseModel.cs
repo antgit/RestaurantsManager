@@ -2,7 +2,7 @@
 
 namespace RestaurantsManager.Models
 {
-    public class ResponseModel
+    public class RestaurantResponseModel
     {
         public string ShortResultText { get; set; }
         public List<RestaurantModel> Restaurants { get; set; }
