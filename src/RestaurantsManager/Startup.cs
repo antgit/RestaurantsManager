@@ -22,6 +22,7 @@ namespace RestaurantsManager
         public void Configure(IApplicationBuilder app)
         {
             app.UseMvcWithDefaultRoute();
+            app.UseStaticFiles();
         }
 
         // Entry point for the application.

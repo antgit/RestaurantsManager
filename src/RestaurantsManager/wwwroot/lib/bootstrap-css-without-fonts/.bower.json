@@ -1,0 +1,32 @@
+{
+  "name": "bootstrap-css-without-fonts",
+  "description": "Bower component for [Bootstrap](http://getbootstrap.com/) CSS without font libraries. No javascript.",
+  "keywords": [
+    "twitter",
+    "bootstrap",
+    "twitter-bootstrap",
+    "css"
+  ],
+  "main": [
+    "css/bootstrap.css",
+    "css/bootstrap-theme.css"
+  ],
+  "homepage": "http://getbootstrap.com/",
+  "author": {
+    "name": "Twitter Inc."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leolux/bootstrap-css-without-fonts.git"
+  },
+  "version": "3.3.4",
+  "_release": "3.3.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "3.3.4",
+    "commit": "e1864dece17a229ad9afdd1e4540cb95ab25a943"
+  },
+  "_source": "git://github.com/leolux/bootstrap-css-without-fonts.git",
+  "_target": "3.3.4",
+  "_originalSource": "bootstrap-css-without-fonts"
+}

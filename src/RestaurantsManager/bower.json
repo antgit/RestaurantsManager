@@ -1,0 +1,7 @@
+{
+	"name": "ASP.NET",
+	"private": true,
+  "dependencies": {
+    "bootstrap-css-without-fonts": "3.3.4"
+  }
+}
