@@ -17,7 +17,7 @@ namespace RestaurantsManager.Repositories
 
         public async Task<List<RestaurantModel>> Get(string outcode)
         {
-            var json = await _justEatApiConnection.MakeRequest();
+            var json = await _justEatApiConnection.MakeRequest(new Dictionary<string, string> { {"q", outcode} });
 
             var data = JsonConvert.DeserializeObject<RestaurantResponseModel>(json);
             

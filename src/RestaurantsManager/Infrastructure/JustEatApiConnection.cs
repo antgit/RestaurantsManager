@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -8,7 +10,7 @@ namespace RestaurantsManager.Infrastructure
 {
     public class JustEatApiConnection
     {
-        public async Task<string> MakeRequest()
+        public async Task<string> MakeRequest(Dictionary<string, string> @params)
         {
             using (var client = new HttpClient())
             {
@@ -18,7 +20,8 @@ namespace RestaurantsManager.Infrastructure
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", "VGVjaFRlc3RBUEk6dXNlcjI=");
                 client.DefaultRequestHeaders.Host = "public.je-apis.com";
 
-                using (var response = await client.GetAsync("restaurants?q=se19"))
+                var uri = "restaurants?" + string.Join(" & ", @params.Select(p => $"{p.Key}={p.Value} "));
+                using (var response = await client.GetAsync(uri))
                 {
                     if (response.IsSuccessStatusCode)
                     {
