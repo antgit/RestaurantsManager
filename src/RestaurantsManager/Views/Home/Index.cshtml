@@ -3,15 +3,26 @@
 
     <form>
         <div class="form-group">
-            <label for="outcode">Email address</label>
-            <input type="text" class="form-control" id="outcode" data-bind="value: outcode">
+            <input type="text" class="form-control" placeholder="Outcode" data-bind="value: outcode">
         </div>
     </form>
 
-    <table class="table table-striped">
-        <tr><td><td></td></tr>
-        <tr><td><td></td></tr>
-        <tr><td><td></td></tr>
+    <table class="table table-striped" data-bind="foreach: restaurants">
+        <caption>Restaurants</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Raiting</th>
+            <th>Cuisine types</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td data-bind="text: name"></td>
+            <td data-bind="text: ratingStars"></td>
+            <td data-bind="text: cuisineTypes"></td>
+        </tr>
+        </tbody>
     </table>
 
     @section Scripts
@@ -19,6 +30,13 @@
         <script type="text/javascript">
             var viewModel = new function() {
                 this.outcode = "se10";
+                this.restaurants = ko.observableArray([
+                    {
+                        name: "1",
+                        ratingStars: 2,
+                        cuisineTypes: "Indian"
+                    }
+                ]);
             }
 
             ko.applyBindings(viewModel);
