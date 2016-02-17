@@ -15,7 +15,7 @@ namespace RestaurantsManager.Repositories
             _justEatApiConnection = justEatApiConnection;
         }
 
-        public async Task<List<RestaurantModel>> Get(string outcode)
+        public async Task<List<Restaurant>> Get(string outcode)
         {
             var json = await _justEatApiConnection.MakeRequest("restaurants", new Dictionary<string, string> { {"q", outcode} });
 

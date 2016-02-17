@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using RestaurantsManager.Infrastructure;
+using RestaurantsManager.Models;
 using RestaurantsManager.Repositories;
 
 namespace RestaurantsManager.Controllers
@@ -28,7 +30,16 @@ namespace RestaurantsManager.Controllers
         public async Task<IActionResult> GetRestaurants(string outcode)
         {
             var restaurants = await _restaurantRepository.Get(outcode);
-            var json = _objectToJsonSerializer.Serialize(restaurants);
+
+            var model = restaurants.Select(r => new RestaurantModel
+            {
+                Id = r.Id,
+                Name = r.Name,
+                RatingStars = r.RatingStars,
+                CuisineTypes = string.Join(", ", r.CuisineTypes.Select(ct=>ct.Name))
+            });
+
+            var json = _objectToJsonSerializer.Serialize(model);
 
             return Content(json, "application/json");
         }

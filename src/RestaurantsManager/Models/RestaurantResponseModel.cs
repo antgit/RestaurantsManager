@@ -5,6 +5,6 @@ namespace RestaurantsManager.Models
     public class RestaurantResponseModel
     {
         public string ShortResultText { get; set; }
-        public List<RestaurantModel> Restaurants { get; set; }
+        public List<Restaurant> Restaurants { get; set; }
     }
 }
