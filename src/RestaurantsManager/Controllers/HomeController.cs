@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNet.Mvc;
 using RestaurantsManager.Repositories;
 
 namespace RestaurantsManager.Controllers
@@ -12,9 +13,9 @@ namespace RestaurantsManager.Controllers
             _restaurantRepository = restaurantRepository;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var restaurants = _restaurantRepository.Get("se19");
+            var restaurants = await _restaurantRepository.Get("se19");
 
             return View();
         }

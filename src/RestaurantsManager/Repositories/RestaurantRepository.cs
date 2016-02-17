@@ -1,38 +1,24 @@
 ﻿using System.Collections.Generic;
-using System.IO;
-using System.Net;
 using RestaurantsManager.Models;
+using System.Threading.Tasks;
+using RestaurantsManager.Infrastructure;
 
 namespace RestaurantsManager.Repositories
 {
     public class RestaurantRepository
     {
-        private const string ApiRoot = "https://public.je-apis.com/restaurants";
+        private readonly JustEatApiConnection _justEatApiConnection;
 
-        public List<RestaurantModel> Get(string outcode)
+        public RestaurantRepository(JustEatApiConnection justEatApiConnection)
         {
-            var request = MakeRequest(outcode + "?q=se19");
-            var response = request.GetResponse();
-            using (var responseStream = response.GetResponseStream())
-            {
-                using (var streamReader = new StreamReader(responseStream))
-                {
-                    var data = streamReader.ReadToEnd();
-                }
-            }
-
-            return null;
+            _justEatApiConnection = justEatApiConnection;
         }
 
-        private WebRequest MakeRequest(string url)
+        public async Task<List<RestaurantModel>> Get(string outcode)
         {
-            var request = WebRequest.Create(url);
-            request.Headers.Add("Accept-Tenant", "uk");
-            request.Headers.Add("Accept-Language", "en-GB");
-            request.Headers.Add("Authorization", "Basic VGVjaFRlc3RBUEk6dXNlcjI=");
-            request.Headers.Add("Host", "public.je-apis.com");
+            var data = await _justEatApiConnection.MakeRequest();
 
-            return request;
+            return null;
         }
     }
 }

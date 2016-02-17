@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using RestaurantsManager.Infrastructure;
 using RestaurantsManager.Repositories;
 
 namespace RestaurantsManager
@@ -14,6 +15,7 @@ namespace RestaurantsManager
             services.AddMvc();
 
             services.AddTransient<RestaurantRepository>();
+            services.AddTransient<JustEatApiConnection>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
