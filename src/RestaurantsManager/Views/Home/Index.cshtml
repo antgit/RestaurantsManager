@@ -7,7 +7,7 @@
         </div>
     </form>
 
-    <table class="table table-striped" data-bind="foreach: restaurants">
+    <table class="table table-striped">
         <caption>Restaurants</caption>
         <thead>
         <tr>
@@ -16,11 +16,11 @@
             <th>Cuisine types</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody data-bind="foreach: restaurants">
         <tr>
             <td data-bind="text: name"></td>
             <td data-bind="text: ratingStars"></td>
-            <td data-bind="text: cuisineTypes"></td>
+            <td data-bind="text: cuisineTypes.join(',')"></td>
         </tr>
         </tbody>
     </table>
@@ -36,31 +36,17 @@
                     self.loadRestaurants(newValue);
                 });
 
-                /*self.restaurants = ko.computed(function () {
-                    return ko.observableArray([
-                        {
-                            name: self.outcode(),
-                            ratingStars: 2,
-                            cuisineTypes: "Indian"
-                        }
-                    ]);
-                });*/
-
-                self.restaurants = ko.observableArray([
-                    {
-                        name: self.outcode(),
-                        ratingStars: 2,
-                        cuisineTypes: "Indian"
-                    }
-                ]);
+                self.restaurants = ko.observableArray();
 
                 self.loadRestaurants = function (outcode) {
                     $.ajax({
                         url: "/Home/GetRestaurants",
                         type: "GET",
                         data: {outcode: outcode}
-                    }).done(function (restaurants) {
-                        alert(restaurants.length);
+                    }).done(function (data) {
+                        data.forEach(function (r) {
+                            self.restaurants.push(r);
+                        });
                     }).fail(function() {
                         console.error("Can't load restaurants data");
                     });
