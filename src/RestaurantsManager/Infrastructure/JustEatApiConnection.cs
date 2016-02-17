@@ -36,8 +36,13 @@ namespace RestaurantsManager.Infrastructure
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", "VGVjaFRlc3RBUEk6dXNlcjI=");
                 client.DefaultRequestHeaders.Host = "public.je-apis.com";
 
-                var paramString = string.Join(" & ", @params.Select(p => $"{p.Key}={p.Value}"));
-                var uri = $"{resource}?{paramString}";
+                var paramString = string.Join("&", @params
+                    .Where(p=>!string.IsNullOrWhiteSpace(p.Value))
+                    .Select(p => $"{p.Key}={p.Value}"));
+
+                var uri = string.IsNullOrWhiteSpace(paramString)
+                    ? resource
+                    : $"{resource}?{paramString}";
 
                 using (var response = await client.GetAsync(uri))
                 {
