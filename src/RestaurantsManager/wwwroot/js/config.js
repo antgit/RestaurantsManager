@@ -3,7 +3,8 @@
     paths: {
         jquery: "../lib/jquery/dist/jquery.min",
         knockout: "../lib/knockout/dist/knockout",
-        restaurantsList: "restaurantsList"
+        restaurantsList: "restaurantsList",
+        restaurantsService: "restaurantsService"
     },
     shim: {
         jquery: {

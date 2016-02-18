@@ -1,4 +1,4 @@
-﻿define("restaurantsList", ["jquery", "knockout"], function ($, ko) {
+﻿define("restaurantsList", ["knockout", "restaurantsService"], function (ko, restaurantsService) {
     function init() {
         var viewModel = new function () {
             var self = this;
@@ -14,12 +14,9 @@
                 if (!outcode) {
                     return;
                 }
+                var promise = restaurantsService.loadRestaurants(outcode);
 
-                $.ajax({
-                    url: "/Home/GetRestaurants",
-                    type: "GET",
-                    data: { outcode: outcode }
-                }).done(function (data) {
+                promise.done(function (data) {
                     self.restaurants(data);
                 }).fail(function () {
                     console.error("Can't load restaurants data");
