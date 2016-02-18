@@ -6,7 +6,7 @@
 	```
 
 3. I can use custom performance measuring tools, implemented using Stopwatch class and default Visual Studio possibilities to measure performance in my project.
-4. 
+4. I would add operations like "Skip" and "Take" to JUST EAT APIs to implement grid with paging. It will decrease loading time for restaurants and server load.
 5.
 
 	```json
