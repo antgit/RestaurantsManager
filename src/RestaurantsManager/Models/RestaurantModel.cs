@@ -6,5 +6,6 @@
         public string Name { get; set; }
         public string CuisineTypes { get; set; }
         public float RatingStars { get; set; }
+        public bool IsOpenNow { get; set; }
     }
 }

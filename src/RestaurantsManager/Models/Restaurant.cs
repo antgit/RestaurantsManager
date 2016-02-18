@@ -8,5 +8,6 @@ namespace RestaurantsManager.Models
         public string Name { get; set; }
         public List<CuisineType> CuisineTypes { get; set; }
         public float RatingStars { get; set; }
+        public bool IsOpenNow { get; set; }
     }
 }

@@ -36,7 +36,8 @@ namespace RestaurantsManager.Controllers
                 Id = r.Id,
                 Name = r.Name,
                 RatingStars = r.RatingStars,
-                CuisineTypes = string.Join(", ", r.CuisineTypes.Select(ct=>ct.Name))
+                CuisineTypes = string.Join(", ", r.CuisineTypes.Select(ct=>ct.Name)),
+                IsOpenNow = r.IsOpenNow
             });
 
             var json = _objectToJsonSerializer.Serialize(model);

@@ -12,6 +12,27 @@
 
             self.restaurants = ko.observableArray();
 
+            self.caption = ko.computed(function () {
+                var restaurantsCount = self.restaurants()
+                    .filter(function (r) { return r.isOpenNow; })
+                    .length;
+
+                var caption;
+
+                switch (restaurantsCount) {
+                    case 0:
+                        caption = "No restaurants are";
+                        break;
+                    case 1:
+                        caption = "1 restaurant is";
+                        break;
+                    default:
+                        caption = restaurantsCount + " restaurants are";
+                }
+
+                return  caption + " currently available";
+            });
+
             self.loadRestaurants = function (outcode) {
                 if (!outcode) {
                     return;
