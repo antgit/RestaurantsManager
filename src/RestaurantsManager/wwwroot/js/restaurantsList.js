@@ -1,4 +1,4 @@
-﻿define("restaurantsList", [], function() {
+﻿define("restaurantsList", ["jquery", "knockout"], function ($, ko) {
     function init() {
         var viewModel = new function () {
             var self = this;
