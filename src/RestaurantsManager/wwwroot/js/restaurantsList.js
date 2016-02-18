@@ -8,6 +8,8 @@
                 self.loadRestaurants(newValue);
             });
 
+            self.busy = ko.observable(false);
+
             self.restaurants = ko.observableArray();
 
             self.loadRestaurants = function (outcode) {
@@ -16,10 +18,14 @@
                 }
                 var promise = restaurantsService.loadRestaurants(outcode);
 
+                self.busy(true);
+
                 promise.done(function (data) {
                     self.restaurants(data);
                 }).fail(function () {
                     console.error("Can't load restaurants data");
+                }).always(function() {
+                    self.busy(false);
                 });
             }
 
